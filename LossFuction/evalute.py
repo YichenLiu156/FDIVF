@@ -89,8 +89,7 @@ class FusLoss(nn.Module):
 
         # 计算高频损失
         high_loss =  2*(1 - self.ssim(f_high, i_high)/2) + (1 - self.ssim(f_high, v_high)/2) + self.l1(f_high, i_high)
-        # high_loss = self.l1(f_high,v_high) + self.l1(f_high, i_high)
-
+        
         # 加权总损失
         total_loss = (self.alpha_low * low_loss +
                       self.alpha_high * high_loss)
